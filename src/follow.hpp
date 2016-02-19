@@ -261,6 +261,7 @@ public:
   Pose   world;
   int    dataCount;
   double laser_angle_min, laser_angle_max; 
+  bool getRecogStopResult();
   void   actionInElevator();
   void   amclPoseCallback(const geometry_msgs::PoseWithCovarianceStamped::ConstPtr& msg);
   void   calcHumanPose(int object_num,  Object *object, Object *human_object);
