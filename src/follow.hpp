@@ -246,6 +246,7 @@ private:
   move_base_msgs::MoveBaseGoal goal;
   //MoveBaseClient ac;
   ros::NodeHandle nh;
+  ros::Publisher  wp4flagPublisher;
   ros::Publisher  cmdVelPublisher;
   ros::Subscriber amclPoseSubscriber;
   ros::Subscriber speechSubscriber;

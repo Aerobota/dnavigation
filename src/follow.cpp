@@ -207,7 +207,10 @@ void Robot::stop()
   geometry_msgs::Twist cmd;
   cmd.linear.x  = 0;
   cmd.angular.z = 0;
+  std_msgs::String msg;
+  msg.data = "wp4 reached";
   cmdVelPublisher.publish(cmd);
+  wp4flagPublisher.publish(msg);
 }
 
 // test function
@@ -2316,6 +2319,8 @@ void Robot::init()
 
   // Set the publisher
   cmdVelPublisher = nh.advertise<geometry_msgs::Twist>("/cmd_vel_mux/input/teleop", 100);
+  wp4flagPublisher = nh.advertise<std_msgs::String>("wp4_flag",1000);
+
 
   // Rest the sound client
   sc.reset(new sound_play::SoundClient());
@@ -2381,6 +2386,9 @@ void Robot::speak(const string str, int wait_time)
    sc->say(str);
    usleep(wait_time*1000);
 }
+
+
+ 
 
 // main関数
 int main(int argc, char* argv[])
